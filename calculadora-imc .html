@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Peso Saludable · Dr. Luis Muñoz Andrade</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1F3A;--blue:#1A4C8B;--sky:#4A90C4;--ice:#D6E9F5;
+  --mint:#E8F4F0;--white:#FFFFFF;--gray:#F4F7FA;--muted:#6B7A8D;--text:#1A2535;
+  --green:#27AE60;--orange:#E67E22;--red:#E74C3C;--purple:#8E44AD;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--gray);min-height:100vh}
+
+/* HEADER */
+.header{background:var(--navy);padding:1.5rem 5%;display:flex;align-items:center;justify-content:space-between}
+.header-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--white);text-decoration:none}
+.header-brand span{color:var(--sky)}
+.header-back{font-size:0.78rem;color:var(--ice);text-decoration:none;opacity:0.7;transition:opacity 0.2s}
+.header-back:hover{opacity:1}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);padding:3.5rem 5% 2.5rem;text-align:center}
+.hero-eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--sky);margin-bottom:0.8rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);font-weight:600;line-height:1.15;margin-bottom:0.8rem}
+.hero p{font-size:0.95rem;color:rgba(255,255,255,0.65);max-width:520px;margin:0 auto 1.5rem;line-height:1.7}
+.disclaimer{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:4px;padding:0.6rem 1.2rem;font-size:0.78rem;color:rgba(255,255,255,0.6)}
+.disclaimer::before{content:'⚕️'}
+
+/* MAIN CONTAINER */
+.container{max-width:900px;margin:0 auto;padding:2.5rem 5%}
+
+/* CARD */
+.card{background:var(--white);border-radius:8px;box-shadow:0 4px 24px rgba(11,31,58,0.08);overflow:hidden;margin-bottom:2rem}
+.card-header{background:linear-gradient(135deg,var(--blue),var(--sky));padding:1.5rem 2rem;display:flex;align-items:center;gap:1rem}
+.card-header-icon{font-size:1.6rem}
+.card-header h2{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--white)}
+.card-header p{font-size:0.8rem;color:rgba(255,255,255,0.75);margin-top:0.1rem}
+.card-body{padding:2rem}
+
+/* INPUTS */
+.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.input-group label{display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem}
+.input-wrapper{position:relative}
+.input-wrapper input{width:100%;padding:0.9rem 3rem 0.9rem 1rem;border:2px solid #E0EAF4;border-radius:6px;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:600;color:var(--navy);background:var(--gray);transition:border-color 0.2s,background 0.2s;outline:none}
+.input-wrapper input:focus{border-color:var(--sky);background:var(--white)}
+.input-unit{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:0.8rem;font-weight:600;color:var(--muted)}
+.btn-calc{width:100%;padding:1rem;background:linear-gradient(135deg,var(--blue),var(--sky));color:var(--white);border:none;border-radius:6px;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:opacity 0.2s;display:flex;align-items:center;justify-content:center;gap:0.5rem}
+.btn-calc:hover{opacity:0.9}
+
+/* IMC RESULT */
+.imc-result{display:none}
+.imc-display{text-align:center;padding:2rem 0 1.5rem}
+.imc-number{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:600;line-height:1;margin-bottom:0.3rem}
+.imc-label{font-size:1.1rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.5rem}
+.imc-sublabel{font-size:0.85rem;color:var(--muted)}
+
+/* RECOMENDACIÓN */
+.reco-box{position:relative;display:flex;align-items:center;gap:1.5rem;background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:12px;padding:1.8rem 2rem;margin:0 0 1.5rem;border:2px solid var(--sky);box-shadow:0 8px 32px rgba(26,76,139,0.35);overflow:hidden}
+.reco-box::before{content:'★ SUGERENCIA';position:absolute;top:0.9rem;right:-2.6rem;background:#FFC107;color:var(--navy);font-size:0.62rem;font-weight:800;letter-spacing:0.08em;padding:0.25rem 3rem;transform:rotate(40deg)}
+.reco-icon{font-size:3.4rem;flex-shrink:0;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.25))}
+.reco-content{flex:1}
+.reco-eyebrow{font-size:0.72rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--sky);margin-bottom:0.4rem}
+.reco-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:0.4rem}
+.reco-desc{font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.55}
+.reco-btn{flex-shrink:0;background:var(--white);color:var(--navy);border:none;padding:0.9rem 1.5rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:800;cursor:pointer;white-space:nowrap;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 14px rgba(0,0,0,0.2)}
+.reco-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.28)}
+@media(max-width:650px){
+  .reco-box{flex-direction:column;text-align:center;padding:1.6rem 1.4rem}
+  .reco-box::before{right:-3rem;top:0.7rem}
+  .reco-btn{width:100%}
+}
+
+/* ETIQUETA RECOMENDADO / NO RECOMENDADO POR OPCIÓN */
+.match-tag{display:inline-flex;align-items:center;gap:0.5rem;padding:0.65rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:800;letter-spacing:0.02em;margin-bottom:1.2rem}
+.match-tag.yes{background:#27AE60;color:var(--white)}
+.match-tag.no{background:#EDEFF2;color:#8A93A0;border:1.5px dashed #C4CCD6}
+
+/* MARCA EN LA PESTAÑA RECOMENDADA */
+.tab{position:relative}
+.tab.tab-reco{color:var(--navy)}
+.tab.tab-reco::after{content:'★';position:absolute;top:0.3rem;right:0.1rem;font-size:0.6rem;color:#FFC107}
+.tab.tab-dim{opacity:0.55}
+
+/* IMC SCALE */
+.imc-scale{background:var(--gray);border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:1.5rem}
+.scale-bar{height:12px;border-radius:6px;background:linear-gradient(to right,#4CAF50 0%,#8BC34A 16.6%,#FFC107 33.3%,#FF9800 50%,#F44336 66.6%,#9C27B0 83.3%,#6A0F6A 100%);position:relative;margin:0.8rem 0 0.4rem}
+.scale-marker{position:absolute;top:-4px;width:20px;height:20px;border-radius:50%;background:var(--navy);border:3px solid var(--white);box-shadow:0 2px 8px rgba(0,0,0,0.3);transform:translateX(-50%);transition:left 0.8s cubic-bezier(.34,1.56,.64,1)}
+.scale-labels{display:flex;justify-content:space-between;font-size:0.65rem;color:var(--muted);font-weight:600}
+
+/* CLASSIFICATION TAGS */
+.classification-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-top:0.8rem}
+.class-tag{padding:0.4rem 0.3rem;border-radius:4px;text-align:center;font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;opacity:0.4;transition:opacity 0.3s}
+.class-tag.active{opacity:1}
+.tag-normal{background:#E8F5E9;color:#2E7D32}
+.tag-sobrepeso{background:#FFF8E1;color:#F57F17}
+.tag-ob1{background:#FFF3E0;color:#E65100}
+.tag-ob2{background:#FFEBEE;color:#C62828}
+.tag-ob3{background:#F3E5F5;color:#6A1B9A}
+
+/* TABS */
+.tabs{display:flex;gap:0;border-bottom:2px solid var(--ice);margin-bottom:1.5rem;overflow-x:auto}
+.tab{padding:0.8rem 1.2rem;font-size:0.82rem;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all 0.2s;background:none;border-top:none;border-left:none;border-right:none;font-family:'Inter',sans-serif}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab:hover{color:var(--blue)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* OPTION CARDS */
+.option-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.2rem}
+.option-icon{font-size:2.2rem;flex-shrink:0}
+.option-badge{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:3px;margin-bottom:0.3rem}
+.option-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--navy)}
+.option-desc{font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem}
+
+.facts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-bottom:1.5rem}
+.fact{background:var(--gray);border-radius:6px;padding:0.9rem;text-align:center}
+.fact-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--navy);line-height:1}
+.fact-label{font-size:0.7rem;color:var(--muted);margin-top:0.2rem}
+
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.pros h4,.cons h4{font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.6rem}
+.pros h4{color:var(--green)}
+.cons h4{color:var(--red)}
+.pros li,.cons li{font-size:0.82rem;color:var(--muted);line-height:1.6;padding:0.2rem 0;list-style:none;display:flex;gap:0.4rem}
+.pros li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.cons li::before{content:'·';color:var(--red);font-weight:700;flex-shrink:0}
+
+.imc-note{background:var(--ice);border-left:3px solid var(--sky);border-radius:0 6px 6px 0;padding:0.9rem 1rem;font-size:0.82rem;color:var(--blue);line-height:1.6;margin-bottom:1.2rem}
+
+/* SIMULATOR */
+.simulator-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:gap}
+.sim-title{font-size:0.9rem;font-weight:700;color:var(--navy)}
+.sim-subtitle{font-size:0.78rem;color:var(--muted)}
+.chart-container{position:relative;height:260px;margin-bottom:1rem}
+.weight-timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0.5rem;margin-top:1rem}
+.wt-item{background:var(--gray);border-radius:6px;padding:0.7rem 0.5rem;text-align:center}
+.wt-month{font-size:0.65rem;font-weight:600;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem}
+.wt-kg{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--navy)}
+.wt-loss{font-size:0.7rem;color:var(--green);font-weight:600}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:8px;padding:2.5rem;text-align:center;margin-bottom:2rem}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--white);margin-bottom:0.7rem}
+.cta-section p{font-size:0.9rem;color:rgba(255,255,255,0.65);margin-bottom:1.8rem;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-wa{display:inline-flex;align-items:center;gap:0.8rem;background:#25D366;color:var(--white);padding:1rem 2rem;border-radius:50px;font-size:1rem;font-weight:700;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,0.35);transition:transform 0.2s,box-shadow 0.2s}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,211,102,0.45)}
+.btn-wa svg{width:24px;height:24px;fill:currentColor}
+.cta-note{font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:1rem}
+
+/* DISCLAIMER BOX */
+.disclaimer-box{background:#FFF8E1;border:1px solid #FFD54F;border-radius:8px;padding:1.2rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;margin-bottom:2rem}
+.disclaimer-box-icon{font-size:1.4rem;flex-shrink:0}
+.disclaimer-box p{font-size:0.82rem;color:#7D6608;line-height:1.6}
+.disclaimer-box strong{color:#5D4E00}
+
+@media(max-width:650px){
+  .input-grid{grid-template-columns:1fr}
+  .facts-grid{grid-template-columns:1fr 1fr}
+  .pros-cons{grid-template-columns:1fr}
+  .classification-grid{grid-template-columns:repeat(2,1fr)}
+  .weight-timeline{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a class="header-brand" href="index.html">Dr. <span>Luis Muñoz</span> Andrade</a>
+  <a class="header-back" href="index.html">← Volver al sitio</a>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Herramienta Educativa · Dr. Luis Muñoz Andrade</p>
+  <h1>Calculadora de Peso<br>& Opciones de Tratamiento</h1>
+  <p>Calcula tu IMC, conoce tu clasificación y explora las opciones de tratamiento basadas en evidencia científica.</p>
+  <div class="disclaimer">Esta herramienta es informativa y no reemplaza una valoración médica</div>
+</div>
+
+<div class="container">
+
+  <!-- CALCULADORA -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-header-icon">⚖️</div>
+      <div>
+        <h2>Calcula tu Índice de Masa Corporal</h2>
+        <p>Ingresa tu peso y talla para comenzar</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="input-grid">
+        <div class="input-group">
+          <label>Peso actual</label>
+          <div class="input-wrapper">
+            <input type="number" id="peso" placeholder="85" min="30" max="300" step="0.1">
+            <span class="input-unit">kg</span>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Talla</label>
+          <div class="input-wrapper">
+            <input type="number" id="talla" placeholder="170" min="100" max="250" step="1">
+            <span class="input-unit">cm</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-calc" onclick="calcularIMC()">
+        <span>🔍</span> Calcular IMC y ver opciones
+      </button>
+    </div>
+  </div>
+
+  <!-- RESULTADO IMC -->
+  <div class="card imc-result" id="imcResult">
+    <div class="card-header">
+      <div class="card-header-icon">📊</div>
+      <div>
+        <h2>Tu Resultado</h2>
+        <p>Clasificación según OMS / SEEDO</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="imc-display">
+        <div class="imc-number" id="imcNumero">—</div>
+        <div class="imc-label" id="imcLabel">—</div>
+        <div class="imc-sublabel" id="imcSublabel">—</div>
+      </div>
+      <div class="reco-box" id="recoBox">
+        <div class="reco-icon" id="recoIcon">💉</div>
+        <div class="reco-content">
+          <div class="reco-eyebrow">Recomendación orientativa según tu IMC</div>
+          <div class="reco-title" id="recoTitle">—</div>
+          <div class="reco-desc" id="recoDesc">—</div>
+        </div>
+        <button class="reco-btn" id="recoBtn" onclick="irARecomendacion()">Ver detalles →</button>
+      </div>
+
+      <div class="imc-scale">
+        <div class="scale-bar">
+          <div class="scale-marker" id="scaleMarker" style="left:0%"></div>
+        </div>
+        <div class="scale-labels">
+          <span>18.5</span><span>25</span><span>30</span><span>35</span><span>40</span><span>50+</span>
+        </div>
+        <div class="classification-grid" style="margin-top:1rem">
+          <div class="class-tag tag-normal" id="tag-normal">Normal<br>18.5–24.9</div>
+          <div class="class-tag tag-sobrepeso" id="tag-sobrepeso">Sobrepeso<br>25–29.9</div>
+          <div class="class-tag tag-ob1" id="tag-ob1">Obesidad I<br>30–34.9</div>
+          <div class="class-tag tag-ob2" id="tag-ob2">Obesidad II<br>35–39.9</div>
+          <div class="class-tag tag-ob3" id="tag-ob3">Obesidad III<br>≥40</div>
+        </div>
+      </div>
+      <div id="pesoIdealInfo" style="font-size:0.85rem;color:var(--muted);text-align:center;padding:0.5rem 0"></div>
+    </div>
+  </div>
+
+  <!-- OPCIONES DE TRATAMIENTO -->
+  <div class="card imc-result" id="tratamientosCard">
+    <div class="card-header">
+      <div class="card-header-icon">🏥</div>
+      <div>
+        <h2>Opciones de Tratamiento</h2>
+        <p>Basadas en evidencia científica según tu IMC</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('glp1',this)">💉 GLP-1 / Ozempic</button>
+        <button class="tab" onclick="showTab('balon',this)">🎈 Balón Gástrico</button>
+        <button class="tab" onclick="showTab('cirugia',this)">⚕️ Cirugía Bariátrica</button>
+      </div>
+
+      <!-- GLP-1 -->
+      <div class="tab-content active" id="tab-glp1">
+        <div class="option-header">
+          <div class="option-icon">💉</div>
+          <div>
+            <div class="option-badge" style="background:#E3F2FD;color:#1565C0">Tratamiento Médico</div>
+            <div class="option-title">Agonistas GLP-1 (Semaglutida / Ozempic · Wegovy)</div>
+          </div>
+        </div>
+        <div class="match-tag" id="match-glp1">Calculando...</div>
+        <div class="imc-note" id="glp1-note">Cargando recomendación...</div>
+        <p class="option-desc">Los agonistas del receptor GLP-1 son medicamentos inyectables semanales que reducen el apetito, retrasan el vaciamiento gástrico y mejoran el control glucémico. Aprobados por FDA para manejo de obesidad y diabetes tipo 2.</p>
+        <div class="facts-grid">
+          <div class="fact"><div class="fact-num">15%</div><div class="fact-label">Pérdida de peso promedio a 68 semanas (STEP 1)</div></div>
+          <div class="fact"><div class="fact-num">20%</div><div class="fact-label">Pérdida máxima reportada en estudios SELECT</div></div>
+          <div class="fact"><div class="fact-num">Semanal</div><div class="fact-label">Frecuencia de aplicación (inyección subcutánea)</div></div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>No invasivo, sin cirugía</li>
+            <li>Mejora glucemia y presión</li>
+            <li>Reduce riesgo cardiovascular</li>
+            <li>Aprobado FDA/EMA</li>
+          </ul></div>
+          <div class="cons"><h4>Consideraciones</h4><ul>
+            <li>Náuseas iniciales frecuentes</li>
+            <li>Costo mensual elevado</li>
+            <li>Requiere uso continuo</li>
+            <li>Recuperación de peso al suspender</li>
+          </ul></div>
+        </div>
+        <div class="sim-title" style="margin-bottom:0.3rem">📈 Simulador de pérdida de peso estimada</div>
+        <div class="sim-subtitle" style="margin-bottom:1rem;font-size:0.78rem;color:var(--muted)">Basado en datos del ensayo STEP 1 (Wilding et al., NEJM 2021)</div>
+        <div class="chart-container"><canvas id="chartGlp1"></canvas></div>
+        <div class="weight-timeline" id="timeline-glp1"></div>
+      </div>
+
+      <!-- BALÓN -->
+      <div class="tab-content" id="tab-balon">
+        <div class="option-header">
+          <div class="option-icon">🎈</div>
+          <div>
+            <div class="option-badge" style="background:#F3E5F5;color:#6A1B9A">Procedimiento Endoscópico</div>
+            <div class="option-title">Balón Gástrico Intragástrico</div>
+          </div>
+        </div>
+        <div class="match-tag" id="match-balon">Calculando...</div>
+        <div class="imc-note" id="balon-note">Cargando recomendación...</div>
+        <p class="option-desc">Dispositivo de silicona que se introduce por endoscopía y se infla con suero salino dentro del estómago. Ocupa espacio y genera saciedad temprana. Permanece 6 meses y se retira también por endoscopía.</p>
+        <div class="facts-grid">
+          <div class="fact"><div class="fact-num">10–15%</div><div class="fact-label">Pérdida de peso corporal total en 6 meses</div></div>
+          <div class="fact"><div class="fact-num">6 meses</div><div class="fact-label">Duración del tratamiento intragástrico</div></div>
+          <div class="fact"><div class="fact-num">Sin cortes</div><div class="fact-label">Procedimiento endoscópico, no quirúrgico</div></div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Sin incisiones quirúrgicas</li>
+            <li>Procedimiento ambulatorio</li>
+            <li>Reversible al retirarlo</li>
+            <li>Puente pre-quirúrgico ideal</li>
+          </ul></div>
+          <div class="cons"><h4>Consideraciones</h4><ul>
+            <li>Náuseas y vómitos primeras semanas</li>
+            <li>Solo 6 meses de tratamiento</li>
+            <li>Requiere cambios de hábitos</li>
+            <li>Posible recuperación de peso</li>
+          </ul></div>
+        </div>
+        <div class="sim-title" style="margin-bottom:0.3rem">📈 Simulador de pérdida de peso estimada</div>
+        <div class="sim-subtitle" style="margin-bottom:1rem;font-size:0.78rem;color:var(--muted)">Basado en revisión sistemática Genco et al. (Obesity Surgery 2013)</div>
+        <div class="chart-container"><canvas id="chartBalon"></canvas></div>
+        <div class="weight-timeline" id="timeline-balon"></div>
+      </div>
+
+      <!-- CIRUGÍA -->
+      <div class="tab-content" id="tab-cirugia">
+        <div class="option-header">
+          <div class="option-icon">⚕️</div>
+          <div>
+            <div class="option-badge" style="background:#E8F5E9;color:#1B5E20">Cirugía Bariátrica</div>
+            <div class="option-title">Manga Gástrica / Bypass Gástrico</div>
+          </div>
+        </div>
+        <div class="match-tag" id="match-cirugia">Calculando...</div>
+        <div class="imc-note" id="cirugia-note">Cargando recomendación...</div>
+        <p class="option-desc">La cirugía bariátrica es el tratamiento más efectivo y duradero para la obesidad severa. La manga gástrica laparoscópica reduce el estómago en un 80%; el bypass gástrico adicionalmente redirige el tránsito intestinal con mayor efecto metabólico.</p>
+        <div class="facts-grid">
+          <div class="fact"><div class="fact-num">25–35%</div><div class="fact-label">Pérdida de peso corporal total a 12–24 meses</div></div>
+          <div class="fact"><div class="fact-num">90%</div><div class="fact-label">Remisión de diabetes tipo 2 (bypass gástrico)</div></div>
+          <div class="fact"><div class="fact-num">Da Vinci</div><div class="fact-label">Disponible en cirugía robótica con el Dr. Muñoz</div></div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Mayor pérdida de peso sostenida</li>
+            <li>Remisión de diabetes e HTA</li>
+            <li>Disponible con técnica robótica</li>
+            <li>Resultados a largo plazo</li>
+          </ul></div>
+          <div class="cons"><h4>Consideraciones</h4><ul>
+            <li>Procedimiento quirúrgico</li>
+            <li>Requiere IMC ≥35 o ≥30 con comorbilidades</li>
+            <li>Cambios permanentes en alimentación</li>
+            <li>Suplementación vitamínica de por vida</li>
+          </ul></div>
+        </div>
+        <div class="sim-title" style="margin-bottom:0.3rem">📈 Simulador de pérdida de peso estimada</div>
+        <div class="sim-subtitle" style="margin-bottom:1rem;font-size:0.78rem;color:var(--muted)">Basado en meta-análisis Buchwald et al. (JAMA 2004) y datos SOS Study</div>
+        <div class="chart-container"><canvas id="chartCirugia"></canvas></div>
+        <div class="weight-timeline" id="timeline-cirugia"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-box">
+    <div class="disclaimer-box-icon">⚕️</div>
+    <p><strong>Aviso médico importante:</strong> Esta herramienta tiene fines exclusivamente educativos e informativos. Los resultados son estimaciones basadas en promedios poblacionales de estudios clínicos y no predicen resultados individuales. La elección del tratamiento adecuado debe realizarse con un médico especialista que evalúe su caso particular, antecedentes, comorbilidades y objetivos de salud.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>¿Listo para dar el primer paso?</h2>
+    <p>El Dr. Luis Muñoz Andrade — especialista certificado en cirugía bariátrica y robótica — ofrece una valoración personalizada para encontrar la mejor opción para ti.</p>
+    <a class="btn-wa" href="https://wa.me/593969833512?text=Hola%20Dr.%20Muñoz%2C%20usé%20la%20calculadora%20de%20IMC%20en%20su%20sitio%20web%20y%20quisiera%20agendar%20una%20valoración." target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Agendar Valoración Gratuita
+    </a>
+    <div class="cta-note">📍 Guayaquil · Meditropoli 206 · Centro Médico Muñoz & Andrade</div>
+  </div>
+
+</div>
+
+<script>
+let pesoActual = 0;
+let charts = {};
+
+function calcularIMC() {
+  const peso = parseFloat(document.getElementById('peso').value);
+  const tallaC = parseFloat(document.getElementById('talla').value);
+  if (!peso || !tallaC || peso < 30 || tallaC < 100) {
+    alert('Por favor ingresa un peso y talla válidos.');
+    return;
+  }
+  const tallaM = tallaC / 100;
+  const imc = peso / (tallaM * tallaM);
+  pesoActual = peso;
+
+  // Mostrar IMC
+  document.getElementById('imcNumero').textContent = imc.toFixed(1);
+  document.getElementById('imcNumero').style.color = getIMCColor(imc);
+
+  let label, sublabel;
+  if (imc < 18.5) { label='Bajo peso'; sublabel='IMC menor a 18.5'; }
+  else if (imc < 25) { label='Peso normal'; sublabel='IMC entre 18.5 y 24.9'; }
+  else if (imc < 30) { label='Sobrepeso'; sublabel='IMC entre 25 y 29.9'; }
+  else if (imc < 35) { label='Obesidad Grado I'; sublabel='IMC entre 30 y 34.9'; }
+  else if (imc < 40) { label='Obesidad Grado II'; sublabel='IMC entre 35 y 39.9'; }
+  else { label='Obesidad Grado III (Mórbida)'; sublabel='IMC igual o mayor a 40'; }
+
+  document.getElementById('imcLabel').textContent = label;
+  document.getElementById('imcLabel').style.color = getIMCColor(imc);
+  document.getElementById('imcSublabel').textContent = sublabel;
+
+  // Marcador escala
+  const pos = Math.min(Math.max(((imc - 15) / (55 - 15)) * 100, 2), 98);
+  document.getElementById('scaleMarker').style.left = pos + '%';
+
+  // Tags activos
+  ['tag-normal','tag-sobrepeso','tag-ob1','tag-ob2','tag-ob3'].forEach(t => document.getElementById(t).classList.remove('active'));
+  if (imc < 25) document.getElementById('tag-normal').classList.add('active');
+  else if (imc < 30) document.getElementById('tag-sobrepeso').classList.add('active');
+  else if (imc < 35) document.getElementById('tag-ob1').classList.add('active');
+  else if (imc < 40) document.getElementById('tag-ob2').classList.add('active');
+  else document.getElementById('tag-ob3').classList.add('active');
+
+  // Peso ideal
+  const pesoIdealMin = (18.5 * tallaM * tallaM).toFixed(1);
+  const pesoIdealMax = (24.9 * tallaM * tallaM).toFixed(1);
+  const exceso = (peso - parseFloat(pesoIdealMax)).toFixed(1);
+  document.getElementById('pesoIdealInfo').innerHTML = exceso > 0
+    ? `Peso ideal para tu talla: <strong>${pesoIdealMin}–${pesoIdealMax} kg</strong> · Exceso de peso: <strong style="color:var(--red)">${exceso} kg</strong>`
+    : `Tu peso está dentro del rango ideal para tu talla: <strong>${pesoIdealMin}–${pesoIdealMax} kg</strong>`;
+
+  // Notas por opción
+  setNotes(imc);
+
+  // Recomendación destacada
+  setRecomendacion(imc);
+  if (recoTabActual) {
+    const tabBtn = document.querySelector(`.tab[onclick*="'${recoTabActual}'"]`);
+    if (tabBtn) showTab(recoTabActual, tabBtn);
+  }
+
+  // Mostrar resultados
+  document.querySelectorAll('.imc-result').forEach(el => el.style.display = 'block');
+
+  // Generar gráficas
+  setTimeout(() => {
+    buildCharts(peso);
+  }, 100);
+
+  document.getElementById('imcResult').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function getIMCColor(imc) {
+  if (imc < 18.5) return '#2196F3';
+  if (imc < 25) return '#4CAF50';
+  if (imc < 30) return '#FF9800';
+  if (imc < 35) return '#F44336';
+  if (imc < 40) return '#C62828';
+  return '#6A1B9A';
+}
+
+function setNotes(imc) {
+  const notes = {
+    glp1: {
+      low: '✓ Indicado: Los GLP-1 están aprobados para IMC ≥27 con comorbilidad o IMC ≥30. Tu IMC es candidato para valoración.',
+      mid: '✓ Indicado: Con tu IMC, los agonistas GLP-1 son una opción válida como tratamiento inicial o complementario.',
+      high: '⚠️ Posible complemento: Para tu IMC, los GLP-1 pueden ser útiles como puente o complemento a otros tratamientos más definitivos.',
+    },
+    balon: {
+      low: '⚠️ Valorar: El balón gástrico está indicado típicamente para IMC 27–40. Con tu IMC se puede evaluar como opción.',
+      mid: '✓ Indicado: Tu IMC es candidato ideal para balón gástrico como tratamiento inicial sin cirugía.',
+      high: '⚠️ Considerar como puente: Con obesidad severa, el balón puede usarse para reducir riesgo quirúrgico previo a cirugía definitiva.',
+    },
+    cirugia: {
+      low: '⚠️ No indicado de rutina: La cirugía bariátrica requiere IMC ≥35 o ≥30 con comorbilidades significativas. Te recomendamos explorar otras opciones.',
+      mid: '✓ Candidato: Con IMC ≥35, eres candidato a cirugía bariátrica. El Dr. Muñoz Andrade realiza manga gástrica y bypass con técnica laparoscópica y robótica.',
+      high: '✓ Candidato ideal: Con tu IMC, la cirugía bariátrica es el tratamiento más efectivo y con mayor pérdida de peso sostenida. Valoración recomendada.',
+    }
+  };
+
+  const level = imc < 30 ? 'low' : imc < 35 ? 'mid' : 'high';
+  const color = imc < 30 ? 'var(--orange)' : 'var(--blue)';
+
+  document.getElementById('glp1-note').textContent = notes.glp1[level];
+  document.getElementById('balon-note').textContent = notes.balon[level];
+  document.getElementById('cirugia-note').textContent = notes.cirugia[level];
+
+  if (imc < 30) {
+    document.getElementById('glp1-note').style.borderColor = 'var(--orange)';
+    document.getElementById('glp1-note').style.background = '#FFF8E1';
+    document.getElementById('glp1-note').style.color = '#7D5A00';
+  }
+}
+
+let recoTabActual = null;
+
+function setRecomendacion(imc) {
+  let icon, titulo, desc, tab;
+
+  if (imc < 27) {
+    icon = '🥗';
+    titulo = 'Sin indicación de tratamiento especializado';
+    desc = 'Tu IMC no requiere tratamiento farmacológico ni de procedimientos. Se recomienda mantener hábitos saludables de alimentación y actividad física.';
+    tab = null;
+  } else if (imc < 30) {
+    icon = '💉';
+    titulo = 'GLP-1 (Ozempic / Wegovy) como primera línea';
+    desc = 'Con tu IMC, los agonistas GLP-1 suelen ser la opción inicial recomendada, sin necesidad de cirugía ni procedimientos invasivos.';
+    tab = 'glp1';
+  } else if (imc < 35) {
+    icon = '🎈';
+    titulo = 'Balón Gástrico como opción principal';
+    desc = 'Tu IMC te posiciona como candidato ideal para balón gástrico, una alternativa no quirúrgica y de rápida recuperación. El GLP-1 también es una opción complementaria.';
+    tab = 'balon';
+  } else if (imc < 40) {
+    icon = '⚕️';
+    titulo = 'Cirugía Bariátrica recomendada';
+    desc = 'Con IMC ≥35 eres candidato a cirugía bariátrica (manga o bypass gástrico), el tratamiento con mayor efectividad y pérdida de peso sostenida a largo plazo.';
+    tab = 'cirugia';
+  } else {
+    icon = '⚕️';
+    titulo = 'Cirugía Bariátrica indicada como prioridad';
+    desc = 'Con obesidad grado III, la cirugía bariátrica es el tratamiento más efectivo y recomendado. Una valoración temprana es importante para reducir riesgos de salud.';
+    tab = 'cirugia';
+  }
+
+  document.getElementById('recoIcon').textContent = icon;
+  document.getElementById('recoTitle').textContent = titulo;
+  document.getElementById('recoDesc').textContent = desc;
+
+  const btn = document.getElementById('recoBtn');
+  recoTabActual = tab;
+  btn.style.display = tab ? 'block' : 'none';
+
+  // Etiquetas y resaltado por cada pestaña de tratamiento
+  const opciones = ['glp1', 'balon', 'cirugia'];
+  opciones.forEach(op => {
+    const matchEl = document.getElementById('match-' + op);
+    const tabBtn = document.querySelector(`.tab[onclick*="'${op}'"]`);
+    if (op === tab) {
+      matchEl.className = 'match-tag yes';
+      matchEl.textContent = '✓ RECOMENDADO PARA TU IMC';
+      if (tabBtn) { tabBtn.classList.add('tab-reco'); tabBtn.classList.remove('tab-dim'); }
+    } else {
+      matchEl.className = 'match-tag no';
+      matchEl.textContent = tab ? 'No es la opción prioritaria para tu IMC' : 'No indicado según tu IMC actual';
+      if (tabBtn) { tabBtn.classList.remove('tab-reco'); tabBtn.classList.add('tab-dim'); }
+    }
+  });
+}
+
+function irARecomendacion() {
+  if (!recoTabActual) return;
+  const btn = document.querySelector(`.tab[onclick*="'${recoTabActual}'"]`);
+  if (btn) showTab(recoTabActual, btn);
+  document.getElementById('tratamientosCard').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function buildCharts(peso) {
+  const meses = [0, 3, 6, 12, 18, 24];
+  const labels = ['Inicio', '3 meses', '6 meses', '12 meses', '18 meses', '24 meses'];
+
+  // GLP-1: ~15% a 68 semanas (~16 meses), curva progresiva
+  const glp1Pct = [0, 0.05, 0.08, 0.13, 0.15, 0.15];
+  // Balón: ~12% a 6 meses, recuperación parcial después
+  const balonPct = [0, 0.06, 0.12, 0.08, 0.05, 0.04];
+  // Cirugía: ~30% progresivo
+  const cirPct = [0, 0.10, 0.20, 0.28, 0.30, 0.30];
+
+  buildChart('chartGlp1', labels, glp1Pct.map(p => +(peso - peso*p).toFixed(1)), '#4A90C4', '#D6E9F5', peso);
+  buildChart('chartBalon', labels, balonPct.map(p => +(peso - peso*p).toFixed(1)), '#8E44AD', '#F3E5F5', peso);
+  buildChart('chartCirugia', labels, cirPct.map(p => +(peso - peso*p).toFixed(1)), '#27AE60', '#E8F5E9', peso);
+
+  buildTimeline('timeline-glp1', labels.slice(1), glp1Pct.slice(1).map(p => +(peso - peso*p).toFixed(1)), glp1Pct.slice(1).map(p => +(peso*p).toFixed(1)));
+  buildTimeline('timeline-balon', labels.slice(1), balonPct.slice(1).map(p => +(peso - peso*p).toFixed(1)), balonPct.slice(1).map(p => +(peso*p).toFixed(1)));
+  buildTimeline('timeline-cirugia', labels.slice(1), cirPct.slice(1).map(p => +(peso - peso*p).toFixed(1)), cirPct.slice(1).map(p => +(peso*p).toFixed(1)));
+}
+
+function buildChart(id, labels, data, color, bg, pesoInicial) {
+  if (charts[id]) charts[id].destroy();
+  const ctx = document.getElementById(id).getContext('2d');
+  charts[id] = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Peso estimado (kg)',
+        data,
+        borderColor: color,
+        backgroundColor: bg,
+        borderWidth: 3,
+        pointBackgroundColor: color,
+        pointRadius: 6,
+        pointHoverRadius: 8,
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.parsed.y} kg (−${(pesoInicial - ctx.parsed.y).toFixed(1)} kg)`
+          }
+        }
+      },
+      scales: {
+        y: {
+          min: Math.floor(data[data.length-1] * 0.9),
+          max: Math.ceil(data[0] * 1.02),
+          ticks: { callback: v => v + ' kg', font: { size: 11 } },
+          grid: { color: '#F0F4F8' }
+        },
+        x: { ticks: { font: { size: 11 } }, grid: { display: false } }
+      }
+    }
+  });
+}
+
+function buildTimeline(id, labels, pesos, perdidas) {
+  const el = document.getElementById(id);
+  el.innerHTML = labels.map((l, i) => `
+    <div class="wt-item">
+      <div class="wt-month">${l}</div>
+      <div class="wt-kg">${pesos[i]}</div>
+      <div class="wt-loss">−${perdidas[i]} kg</div>
+    </div>
+  `).join('');
+}
+
+function showTab(tab, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
