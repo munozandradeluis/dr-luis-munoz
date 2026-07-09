@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cirugía Oncológica Digestiva · Dr. Luis Adrián Muñoz Andrade</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-549097550"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-549097550');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0B1F3A; --blue: #1A4C8B; --sky: #4A90C4;
+    --ice: #D6E9F5; --white: #FFFFFF; --gray: #F4F7FA;
+    --muted: #6B7A8D; --text: #1A2535;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    background: rgba(11,31,58,0.97); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); letter-spacing: 0.04em; text-decoration: none; }
+  .nav-brand span { color: var(--sky); }
+  .nav-back { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+  .nav-back:hover { color: var(--white); }
+
+  .hero {
+    background: var(--navy);
+    padding: 9rem 8% 4rem;
+    text-align: center;
+  }
+  .hero-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sky); margin-bottom: 1rem; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; color: var(--white); line-height: 1.15; margin-bottom: 1rem; }
+  .hero-sub { font-size: 0.95rem; font-weight: 300; color: var(--ice); max-width: 620px; margin: 0 auto; line-height: 1.7; }
+
+  section { padding: 4rem 8%; }
+  .section-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sky); margin-bottom: 0.6rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); margin-bottom: 1.2rem; }
+  .divider { width: 2.5rem; height: 2px; background: var(--sky); margin-bottom: 1.5rem; }
+
+  .organ-block { margin-bottom: 2.8rem; }
+  .cond-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+
+  .cond-card {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--gray); padding: 1.4rem 1.3rem;
+    border-left: 3px solid var(--sky);
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+    position: relative;
+  }
+  .cond-card:hover { box-shadow: 0 8px 24px rgba(11,31,58,0.1); transform: translateY(-2px); background: var(--white); }
+  .cond-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; padding-right: 4.5rem; }
+  .cond-card p { font-size: 0.78rem; line-height: 1.6; color: var(--muted); }
+  .cond-arrow { position: absolute; top: 1.4rem; right: 1.3rem; color: var(--sky); font-size: 1.1rem; }
+
+  .cond-card.pending { background: var(--gray); cursor: default; }
+  .cond-card.pending:hover { box-shadow: none; transform: none; background: var(--gray); }
+  .cond-card.pending h3 { color: var(--muted); }
+  .badge-pronto {
+    position: absolute; top: 1.4rem; right: 1.3rem;
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    background: #FCE9C8; color: #8A5A00; padding: 0.22rem 0.55rem; border-radius: 20px;
+  }
+
+  .contact-strip {
+    background: var(--gray); text-align: center; padding: 3rem 8%;
+  }
+  .contact-strip p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.2rem; }
+  .btn-primary { display: inline-block; background: var(--sky); color: var(--white); padding: 0.85rem 2rem; text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 3px; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--blue); }
+
+  footer { background: var(--navy); padding: 2.2rem 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--ice); }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+
+  @media (max-width: 700px) {
+    .cond-grid { grid-template-columns: 1fr; }
+    .hero { padding: 7rem 6% 3rem; }
+    section { padding: 3rem 6%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Dr. <span>Luis Adrián </span> Muñoz Andrade</a>
+  <a class="nav-back" href="index.html#procedures">← Volver</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Cirugía Oncológica Digestiva · Instituto Nacional SOLCA</p>
+  <h1 class="hero-title">Resecciones Oncológicas Digestivas</h1>
+  <p class="hero-sub">Diagnóstico y tratamiento quirúrgico de tumores y cánceres del tracto digestivo, con formación especializada en el Instituto Nacional de Oncología SOLCA y experiencia en cirugía mínimamente invasiva.</p>
+</section>
+
+<section>
+
+  <div class="organ-block">
+    <p class="section-eyebrow">Tiroides</p>
+    <h2 class="section-title">Cirugía de Tiroides</h2>
+    <div class="divider"></div>
+    <div class="cond-grid">
+      <a href="cancer-tiroides.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Cáncer de Tiroides</h3><p>Diagnóstico y manejo quirúrgico oncológico de la glándula tiroides.</p></a>
+      <a href="tumor-tiroides.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Tumor de Tiroides</h3><p>Evaluación y tratamiento de tumores tiroideos benignos y malignos.</p></a>
+      <a href="nodulo-tiroides.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Nódulo de Tiroides</h3><p>Estudio y seguimiento de nódulos tiroideos con criterios quirúrgicos.</p></a>
+    </div>
+  </div>
+
+  <div class="organ-block">
+    <p class="section-eyebrow">Estómago</p>
+    <h2 class="section-title">Cirugía Gástrica Oncológica</h2>
+    <div class="divider"></div>
+    <div class="cond-grid">
+      <a href="cancer-estomago.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Cáncer de Estómago</h3><p>Resección gástrica oncológica con linfadenectomía.</p></a>
+      <a href="tumor-estomago.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Tumor de Estómago</h3><p>Tratamiento quirúrgico de tumores gástricos.</p></a>
+    </div>
+  </div>
+
+  <div class="organ-block">
+    <p class="section-eyebrow">Páncreas</p>
+    <h2 class="section-title">Cirugía Pancreática Oncológica</h2>
+    <div class="divider"></div>
+    <div class="cond-grid">
+      <a href="cancer-pancreas.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Cáncer de Páncreas</h3><p>Pancreatectomías oncológicas, incluyendo abordaje robótico.</p></a>
+      <a href="tumor-pancreas.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Tumor en el Páncreas</h3><p>Evaluación y resección de tumores pancreáticos.</p></a>
+    </div>
+  </div>
+
+  <div class="organ-block">
+    <p class="section-eyebrow">Hígado</p>
+    <h2 class="section-title">Cirugía Hepática Oncológica</h2>
+    <div class="divider"></div>
+    <div class="cond-grid">
+      <a href="cancer-higado.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Cáncer de Hígado</h3><p>Resecciones hepáticas oncológicas mínimamente invasivas.</p></a>
+      <a href="tumor-higado.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Tumor en el Hígado</h3><p>Diagnóstico y tratamiento de tumores hepáticos primarios y metastásicos.</p></a>
+    </div>
+  </div>
+
+  <div class="organ-block">
+    <p class="section-eyebrow">Colon</p>
+    <h2 class="section-title">Cirugía Colorrectal Oncológica</h2>
+    <div class="divider"></div>
+    <div class="cond-grid">
+      <a href="cancer-colon.html" class="cond-card"><span class="cond-arrow">›</span><h3>Cáncer de Colon</h3><p>Colectomías oncológicas laparoscópicas y robóticas con preservación funcional.</p></a>
+      <a href="tumor-colon.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Tumor en Colon</h3><p>Evaluación y manejo quirúrgico de tumores de colon.</p></a>
+    </div>
+  </div>
+
+  <div class="organ-block">
+    <p class="section-eyebrow">Recto</p>
+    <h2 class="section-title">Cirugía de Recto</h2>
+    <div class="divider"></div>
+    <div class="cond-grid">
+      <a href="cancer-recto.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Cáncer de Recto</h3><p>Resección rectal oncológica con preservación esfinteriana cuando es posible.</p></a>
+      <a href="tumor-recto.html" class="cond-card pending"><span class="badge-pronto">Próximamente</span><h3>Tumor de Recto</h3><p>Diagnóstico y tratamiento de tumores rectales.</p></a>
+    </div>
+  </div>
+
+</section>
+
+<div class="contact-strip">
+  <p>¿Tiene un diagnóstico reciente o busca una segunda opinión oncológica?</p>
+  <a href="index.html#contact" class="btn-primary">Agendar Consulta</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Dr. Luis Adrián Muñoz Andrade · Cirujano General</div>
+  <div class="footer-copy">© 2026 · Quito, Ecuador</div>
+</footer>
+
+</body>
+</html>
