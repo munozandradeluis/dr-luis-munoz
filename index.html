@@ -453,9 +453,25 @@ function handleSubmit(e) {
     btn.textContent = 'Enviar Solicitud';
   });
 }
+  function gtag_report_conversion(url) {
+  gtag('event', 'conversion', {
+    'send_to': 'AW-549097550/mde6CPTXk8wcEM6g6oUC'
+  });
+
+  if (url) {
+    window.open(url, '_blank');
+  }
+
+  return false;
+}
 </script>
 
-<a class="whatsapp-float" href="https://wa.me/593999580867?text=Hola%20Dr.%20Luis%20Adri%C3%A1n%20Mu%C3%B1oz%20Andrade,%20deseo%20agendar%20una%20consulta." target="_blank" rel="noopener" aria-label="Agenda tu cita por WhatsApp">
+<a class="whatsapp-float"
+   href="https://wa.me/593999580867?text=Hola%20Dr.%20Luis%20Adri%C3%A1n%20Mu%C3%B1oz%20Andrade,%20deseo%20agendar%20una%20consulta."
+   onclick="gtag('event','conversion',{'send_to':'AW-549097550/mde6CPTXk8wcEM6g6oUC'});"
+   target="_blank"
+   rel="noopener"
+   aria-label="Agenda tu cita por WhatsApp">
   <span class="wa-pulse"></span>
   <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.03.09-1.66-.1-.38-.12-.87-.28-1.5-.55-2.63-1.14-4.35-3.8-4.48-3.98-.13-.18-1.07-1.42-1.07-2.71 0-1.29.68-1.92.92-2.18.24-.26.53-.33.71-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.28.02.46-.09.18-.14.29-.27.44-.13.15-.28.34-.4.46-.13.13-.27.27-.12.53.15.26.67 1.1 1.44 1.79 1 .89 1.84 1.16 2.1 1.29.26.13.42.11.57-.07.15-.18.65-.76.82-1.02.17-.26.35-.22.58-.13.24.09 1.51.71 1.77.84.26.13.43.2.5.31.07.11.07.65-.15 1.27z"/></svg>
   <span>Agenda tu cita aquí</span>
