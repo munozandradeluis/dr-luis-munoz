@@ -13,6 +13,22 @@
 
   gtag('config', 'AW-549097550');
 </script>
+  <script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (url) {
+      window.location = url;
+    }
+  };
+
+  gtag('event', 'conversion', {
+    'send_to': 'AW-549097550/mde6CPTXk8wcEM6g6oUC',
+    'event_callback': callback
+  });
+
+  return false;
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
