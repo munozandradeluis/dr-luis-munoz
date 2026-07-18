@@ -31,7 +31,25 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
+  <script>
+document.addEventListener('click', function (event) {
+  const whatsappLink = event.target.closest(
+    'a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href*="whatsapp.com/send"]'
+  );
+
+  if (!whatsappLink) return;
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'whatsapp_click', {
+      link_url: whatsappLink.href,
+      page_location: window.location.href,
+      page_title: document.title
+    });
+  }
+});
+</script>
+ </body>
+</html>
     font-family:'Inter',sans-serif;
     background:var(--white);
     color:var(--navy);
