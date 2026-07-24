@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manga Gástrica Quito | Dr. Luis Muñoz - Cirujano Bariátrico</title>
+<meta name="description" content="Manga gástrica en Quito. Cirujano con formación en Cleveland Clinic Abu Dhabi y cirugía robótica en Brasil. Agenda tu valoración por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ========================================
+     GOOGLE ADS CONVERSION TRACKING
+     ======================================== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-549097550"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  
+  gtag('config', 'AW-549097550', {
+    'conversion_linker': true
+  });
+</script>
+
+<!-- ========================================
+     FUNCIÓN MEJORADA WHATSAPP + MODAL
+     ======================================== -->
+<script>
+  function abrirWhatsAppConModal() {
+    console.log('✅ Usuario hizo clic en WhatsApp - registrando conversión y abriendo modal');
+    
+    // 1. REGISTRAR CONVERSIÓN EN GOOGLE ADS
+    gtag('event', 'conversion', {
+      'send_to': 'AW-549097550/mde6CPTXk8wcEM6g6oUC',
+      'value': 1.0,
+      'currency': 'USD'
+    });
+
+    // 2. ABRIR MODAL POPUP (ventana pequeña)
+    // Especificar tamaño y posición para que sea pequeño
+    setTimeout(function() {
+      window.open(
+        'modal-confirmacion.html',  // URL del archivo HTML del modal
+        'modal_confirmacion',        // Nombre de la ventana
+        'width=420,height=500,left=100,top=100,resizable=yes,scrollbars=no' // Tamaño y posición
+      );
+    }, 100);
+
+    // 3. ABRIR WHATSAPP (ventana normal)
+    setTimeout(function() {
+      window.open(
+        'https://api.whatsapp.com/send/?phone=593999580867&text=Hola%20Dr.%20Luis%20Adri%C3%A1n%2C%20me%20gustar%C3%ADa%20una%20cita%20para%20valoraci%C3%B3n%20para%20manga%20g%C3%A1strica&type=phone_number&app_absent=0',
+        '_blank'
+      );
+    }, 200);
+  }
+</script>
+
+<style>
+  html{scroll-behavior:smooth;}
+  :root{
+    --navy:#0A2E4D;
+    --sky:#4FB3D9;
+    --sky-light:#EAF6FB;
+    --teal:#1F9E8F;
+    --teal-light:#E8F8F5;
+    --gray:#F7F9FB;
+    --white:#FFFFFF;
+    --gold:#E8A83C;
+    --text-dim:#5C7186;
+    --border:#E7EEF3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--white);
+    color:var(--navy);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Poppins',sans-serif;}
+  img,svg{display:block;max-width:100%;}
+  .container{max-width:520px;margin:0 auto;padding:0 20px;}
+
+  /* TOP BAR */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    padding:14px 16px;
+    display:flex;align-items:center;gap:10px;
+    border-bottom:1px solid var(--border);
+  }
+  .back-btn{
+    display:flex;align-items:center;gap:6px;
+    color:var(--navy);text-decoration:none;
+    font-size:14px;font-weight:700;
+    padding:8px 14px;border-radius:30px;
+    background:var(--sky-light);
+    border:1px solid #D3ECF5;
+  }
+  .back-btn svg{width:16px;height:16px;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(160deg, #FFFFFF 0%, var(--sky-light) 55%, #DCF0F8 100%);
+    padding:34px 0 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;top:-100px;right:-100px;
+    width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle, rgba(79,179,217,0.25), transparent 70%);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;bottom:-60px;left:-80px;
+    width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle, rgba(31,158,143,0.18), transparent 70%);
+  }
+  .hero-eyebrow{
+    position:relative;z-index:2;
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12px;font-weight:800;letter-spacing:.08em;
+    color:var(--teal);text-transform:uppercase;
+    background:var(--teal-light);
+    padding:6px 12px;border-radius:20px;
+    margin-bottom:16px;
+  }
+  .hero h1{
+    position:relative;z-index:2;
+    font-size:44px;font-weight:900;line-height:1.0;
+    letter-spacing:-0.02em;color:var(--navy);
+  }
+  .hero h1 span{color:var(--sky);}
+  .hero p{
+    position:relative;z-index:2;
+    margin-top:14px;font-size:16px;color:var(--text-dim);
+    max-width:340px;line-height:1.55;font-weight:500;
+  }
+  .hero-cta{
+    position:relative;z-index:2;
+    margin-top:22px;
+    display:inline-flex;align-items:center;gap:10px;
+    background:#25D366;color:#fff;
+    padding:16px 24px;border-radius:14px;
+    font-weight:700;font-size:16px;text-decoration:none;
+    box-shadow:0 10px 26px rgba(37,211,102,0.3);
+    cursor:pointer;
+    border:none;
+    transition:all 0.3s ease;
+  }
+  .hero-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 15px 35px rgba(37,211,102,0.4);
+  }
+  .hero-cta svg{width:22px;height:22px;flex-shrink:0;}
+
+  .hero-graphic{margin-top:30px;position:relative;z-index:2;
+    background:#fff;border-radius:22px;padding:16px 8px 6px;
+    box-shadow:0 10px 34px rgba(10,46,77,0.1);
+  }
+
+  /* STAT STRIP */
+  .stats{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:10px;margin-top:22px;position:relative;z-index:2;
+  }
+  .stat{
+    background:#fff;
+    padding:16px 8px;text-align:center;border-radius:14px;
+    box-shadow:0 4px 16px rgba(10,46,77,0.06);
+    border:1px solid var(--border);
+  }
+  .stat b{display:block;font-size:22px;font-family:'Poppins',sans-serif;font-weight:800;color:var(--teal);}
+  .stat span{font-size:10.5px;color:var(--text-dim);line-height:1.3;display:block;margin-top:3px;font-weight:600;}
+
+  /* SECTION GENERIC */
+  section{padding:42px 0;}
+  .section-eyebrow{
+    text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.1em;
+    color:var(--sky);text-transform:uppercase;margin-bottom:8px;
+  }
+  .section-title{
+    font-size:26px;font-weight:800;color:var(--navy);
+    text-align:center;letter-spacing:-0.01em;
+  }
+  .section-title span{color:var(--teal);}
+  .section-sub{
+    text-align:center;color:var(--text-dim);
+    font-size:14px;margin-top:6px;font-weight:500;
+  }
+
+  /* FINAL CTA */
+  .final-cta{
+    background:linear-gradient(135deg, #0A2E4D 0%, #1F4E7B 100%);
+    padding:48px 20px;text-align:center;color:#fff;
+  }
+  .final-cta h2{
+    font-size:32px;font-weight:900;margin-bottom:6px;letter-spacing:-0.01em;
+  }
+  .final-cta p{
+    font-size:16px;margin-bottom:24px;opacity:0.95;
+  }
+  .final-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#25D366;color:#fff;
+    padding:16px 28px;border-radius:14px;
+    font-weight:700;font-size:16px;
+    text-decoration:none;
+    cursor:pointer;
+    border:none;
+    box-shadow:0 10px 26px rgba(37,211,102,0.3);
+    transition:all 0.3s ease;
+  }
+  .final-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(37,211,102,0.4);
+  }
+  .final-btn svg{width:22px;height:22px;flex-shrink:0;}
+
+  /* FLOATING WHATSAPP */
+  .floating-wa{
+    position:fixed;bottom:24px;right:20px;z-index:99;
+    width:56px;height:56px;
+    background:#25D366;color:#fff;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 20px rgba(37,211,102,0.4);
+    text-decoration:none;
+    transition:all 0.3s ease;
+    cursor:pointer;
+    border:none;
+  }
+  .floating-wa:hover{
+    transform:scale(1.1);
+    bottom:28px;
+  }
+  .floating-wa svg{width:28px;height:28px;}
+
+  footer{
+    background:#f5f5f5;padding:24px 20px;text-align:center;
+  }
+  footer a{
+    color:var(--navy);text-decoration:none;font-size:13px;font-weight:600;
+  }
+
+  /* IMC CALCULATOR */
+  .imc-section{background:var(--sky-light);padding:40px 0;}
+  .imc-calculator{
+    background:#fff;border-radius:16px;padding:24px;
+    box-shadow:0 4px 16px rgba(10,46,77,0.08);
+  }
+  .imc-inputs{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;
+  }
+  .imc-input-group{
+    display:flex;flex-direction:column;gap:4px;
+  }
+  .imc-input-group label{
+    font-size:13px;font-weight:700;color:var(--navy);
+  }
+  .imc-input-group input{
+    padding:12px;border:1.5px solid var(--border);
+    border-radius:10px;font-size:16px;
+  }
+  .imc-btn{
+    width:100%;padding:14px;background:var(--teal);color:#fff;
+    border:none;border-radius:10px;font-weight:700;font-size:15px;
+    cursor:pointer;transition:all 0.3s ease;
+  }
+  .imc-btn:hover{background:#1a8978;}
+  .imc-result{
+    margin-top:20px;text-align:center;opacity:0;transition:opacity 0.3s ease;
+  }
+  .imc-result.show{opacity:1;}
+  .imc-number{
+    font-size:48px;font-weight:900;font-family:'Poppins',sans-serif;
+    margin-bottom:8px;
+  }
+  .imc-label{
+    font-size:18px;font-weight:700;padding:8px 16px;border-radius:30px;
+    display:inline-block;margin-bottom:12px;
+  }
+  .imc-note{font-size:14px;color:var(--text-dim);line-height:1.5;}
+
+  /* TESTIMONIALS */
+  .reviews-list{margin-top:20px;}
+  .testi-card{
+    background:#fff;padding:20px;border-radius:12px;
+    margin-bottom:12px;border:1px solid var(--border);
+  }
+  .testi-stars{font-size:13px;color:#E8A83C;margin-bottom:10px;}
+  .testi-quote{
+    font-size:14px;color:var(--text-dim);line-height:1.6;
+    font-style:italic;margin-bottom:14px;
+  }
+  .testi-who{
+    display:flex;align-items:center;gap:10px;
+  }
+  .testi-avatar{
+    width:40px;height:40px;border-radius:50%;
+    background:linear-gradient(135deg, var(--sky), var(--teal));
+  }
+  .testi-who > div{font-size:13px;}
+  .testi-who b{display:block;color:var(--navy);}
+  .testi-who span{color:var(--text-dim);font-size:12px;}
+
+  /* MORE INFO */
+  .more-info{background:var(--gray);}
+  .more-info-title{
+    font-size:28px;font-weight:900;text-align:center;
+    margin:10px 0 8px;letter-spacing:-0.01em;
+  }
+  .more-info-title span{color:var(--teal);}
+  .more-info-intro{
+    text-align:center;color:var(--text-dim);
+    font-size:15px;max-width:380px;margin:0 auto 24px;line-height:1.6;
+  }
+  .info-list{margin-top:20px;}
+  .info-card{
+    background:#fff;padding:20px;border-radius:12px;
+    margin-bottom:12px;border:1px solid var(--border);
+  }
+  .info-card h3{
+    color:var(--navy);font-size:16px;font-weight:800;margin-bottom:10px;
+  }
+  .info-card p{
+    color:var(--text-dim);font-size:14px;line-height:1.6;
+  }
+  .info-disclaimer{
+    text-align:center;color:var(--text-dim);
+    font-size:12px;margin-top:24px;font-style:italic;
+  }
+
+  @media(max-width:520px){
+    .hero h1{font-size:36px;}
+    .section-title{font-size:24px;}
+    .more-info-title{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a class="back-btn" href="https://drluismunozandrade.com">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    Volver
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Procedimiento bariátrico
+    </div>
+    <h1>Manga <span>Gástrica</span></h1>
+    <p>Reduce tu estómago y transforma tu vida. Cirugía laparoscópica con especialista en Cleveland Clinic y cirugía robótica.</p>
+    
+    <button class="hero-cta" onclick="abrirWhatsAppConModal();">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.76 1.24-.45.06-.95.26-3.2-.68-2.7-1.13-4.43-3.86-4.56-4.04-.13-.18-1.1-1.46-1.1-2.79 0-1.32.7-1.97.94-2.24.24-.27.53-.34.7-.34.18 0 .35 0 .5.01.16.01.38-.06.6.45.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.27.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.17 1.34.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.86.27.13.44.2.51.31.07.13.07.71-.15 1.33z"/>
+      </svg>
+      Agendar valoración
+    </button>
+
+    <div class="stats">
+      <div class="stat">
+        <b>+850</b>
+        <span>Pacientes<br>satisfechos</span>
+      </div>
+      <div class="stat">
+        <b>15+</b>
+        <span>Años de<br>experiencia</span>
+      </div>
+      <div class="stat">
+        <b>99%</b>
+        <span>Tasa de<br>satisfacción</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMC CALCULATOR -->
+<section class="imc-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div class="section-eyebrow">Herramienta</div>
+      <h2 class="section-title">Calcula tu <span>IMC</span></h2>
+      <p class="section-sub">Descubre si eres candidato a manga gástrica</p>
+    </div>
+
+    <div class="imc-calculator">
+      <div class="imc-inputs">
+        <div class="imc-input-group">
+          <label>Peso (kg)</label>
+          <input type="number" id="peso" placeholder="75">
+        </div>
+        <div class="imc-input-group">
+          <label>Altura (cm)</label>
+          <input type="number" id="altura" placeholder="165">
+        </div>
+      </div>
+      <button class="imc-btn" onclick="calcularIMC()">Calcular mi IMC</button>
+
+      <div class="imc-result" id="resultado">
+        <div class="imc-number" id="imcValor">--</div>
+        <div class="imc-label" id="imcCategoria">--</div>
+        <p class="imc-note" id="imcNota"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonios" style="background:var(--gray);padding-top:8px;">
+  <div class="container">
+    <div class="section-eyebrow">Testimonios</div>
+    <h2 class="section-title">Historias <span>reales</span></h2>
+    <p class="section-sub">Pacientes que transformaron su salud</p>
+
+    <div class="reviews-list">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Yo probé de todo: dietas, gimnasio, pastillas, y siempre volvía a subir. Cuando llegué a la consulta pesaba 108 kilos y ya me dolían las rodillas hasta para jugar con mis hijos. En 6 meses bajé más de 30 kilos, pero lo que más valoro es que el Dr. Luis nunca me soltó: hasta ahora me escribe para ver cómo voy."</p>
+        <div class="testi-who">
+          <div class="testi-avatar"></div>
+          <div><b>Lucya Gallegos</b><span>Quito, Ecuador</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Entré al quirófano muerto de miedo, para qué mentir. Pero todo fue rapidísimo y al segundo día ya estaba en mi casa caminando. Pensé que iba a sufrir meses y a las tres semanas ya estaba trabajando normal. Mi familia no lo podía creer."</p>
+        <div class="testi-who">
+          <div class="testi-avatar"></div>
+          <div><b>Andrés Chicaiza</b><span>Guayaquil, Ecuador</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"En la primera consulta el doctor me dijo algo que nunca olvido: que la cirugía era una herramienta, no magia, y que íbamos a trabajar juntos. Esa honestidad me dio confianza. Hoy me subo a un avión sin pedir extensión de cinturón y eso, para mí, no tiene precio."</p>
+        <div class="testi-who">
+          <div class="testi-avatar"></div>
+          <div><b>Verónica Moreno</b><span>Quito, Ecuador</span></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://www.google.com/search?q=Dr.+Luis+Adrian+Muñoz+Andrade" target="_blank" rel="noopener" style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:14px;font-weight:700;font-size:14px;color:var(--navy);text-decoration:none;">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      Ver más reseñas en Google
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div id="contacto" class="final-cta">
+  <h2>Da el primer paso hoy</h2>
+  <p>Agenda tu valoración por WhatsApp</p>
+  <button class="final-btn" onclick="abrirWhatsAppConModal();">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.76 1.24-.45.06-.95.26-3.2-.68-2.7-1.13-4.43-3.86-4.56-4.04-.13-.18-1.1-1.46-1.1-2.79 0-1.32.7-1.97.94-2.24.24-.27.53-.34.7-.34.18 0 .35 0 .5.01.16.01.38-.06.6.45.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.27.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.17 1.34.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.86.27.13.44.2.51.31.07.13.07.71-.15 1.33z"/>
+    </svg>
+    Escribir por WhatsApp
+  </button>
+</div>
+
+<footer>
+  <a href="https://drluismunozandrade.com">← Volver al sitio principal del Dr. Luis Muñoz</a>
+</footer>
+
+<!-- MÁS INFORMACIÓN -->
+<section class="more-info" id="mas-informacion">
+  <div class="container">
+    <div class="section-eyebrow">Información para pacientes</div>
+    <h2 class="more-info-title">¿Quieres saber <span>más?</span></h2>
+    <p class="more-info-intro">Conoce los aspectos principales de la manga gástrica, su realización, recuperación y seguimiento.</p>
+
+    <div class="info-list">
+      <article class="info-card">
+        <h3>¿Qué es la manga gástrica?</h3>
+        <p>Es una cirugía bariátrica que reduce el tamaño del estómago aproximadamente en un 75-80%, mediante la resección de una porción del mismo. El estómago resultante tiene forma tubular, lo que limita la cantidad de alimento ingerido y genera cambios hormonales que favorecen la saciedad.</p>
+      </article>
+
+      <article class="info-card">
+        <h3>¿Qué enfermedades mejora o puede llevar a remisión?</h3>
+        <p>En pacientes correctamente seleccionados puede mejorar significativamente la diabetes tipo 2, la hipertensión arterial, la apnea obstructiva del sueño, el hígado graso y las alteraciones del colesterol. No se considera una cura garantizada: el resultado depende de cada caso y del seguimiento a largo plazo.</p>
+      </article>
+
+      <article class="info-card">
+        <h3>¿Cuánto demora?</h3>
+        <p>La cirugía suele durar aproximadamente entre 60 y 120 minutos. El tiempo puede variar según el índice de masa corporal, cirugías abdominales previas, anatomía y complejidad individual.</p>
+      </article>
+
+      <article class="info-card">
+        <h3>¿Cómo se hace?</h3>
+        <p>Generalmente se realiza por laparoscopia, mediante pequeñas incisiones. Se reseca la porción lateral del estómago con una engrapadora quirúrgica, dejando un estómago tubular de menor capacidad. La técnica exacta se define después de una evaluación integral.</p>
+      </article>
+
+      <article class="info-card">
+        <h3>Posibles complicaciones</h3>
+        <p>Como toda cirugía mayor, puede presentar sangrado, infección, fuga de la línea de grapado, trombosis, embolia pulmonar, reflujo gastroesofágico o deficiencias nutricionales. La evaluación preoperatoria, la prevención y el seguimiento reducen estos riesgos.</p>
+      </article>
+
+      <article class="info-card">
+        <h3>Recuperación y seguimiento</h3>
+        <p>La hospitalización suele ser de uno a dos días y muchas personas retoman actividades ligeras en una o dos semanas, según su evolución. Después de la cirugía se requiere progresión de la dieta, hidratación, actividad física gradual, suplementación de vitaminas y minerales, análisis de laboratorio y controles periódicos con cirugía y nutrición.</p>
+      </article>
+    </div>
+
+    <p class="info-disclaimer">Esta información es general y no reemplaza una valoración médica individual. La indicación, los beneficios y los riesgos deben analizarse según las condiciones de cada paciente.</p>
+  </div>
+</section>
+
+<!-- FLOATING WHATSAPP -->
+<button class="floating-wa" onclick="abrirWhatsAppConModal();">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.76 1.24-.45.06-.95.26-3.2-.68-2.7-1.13-4.43-3.86-4.56-4.04-.13-.18-1.1-1.46-1.1-2.79 0-1.32.7-1.97.94-2.24.24-.27.53-.34.7-.34.18 0 .35 0 .5.01.16.01.38-.06.6.45.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.27.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.17 1.34.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.86.27.13.44.2.51.31.07.13.07.71-.15 1.33z"/></svg>
+</button>
+
+<script>
+function calcularIMC(){
+  const peso = parseFloat(document.getElementById('peso').value);
+  const altura = parseFloat(document.getElementById('altura').value) / 100;
+  if(!peso || !altura){ return; }
+  const imc = peso / (altura*altura);
+  const resultado = document.getElementById('resultado');
+  const imcValor = document.getElementById('imcValor');
+  const imcCategoria = document.getElementById('imcCategoria');
+  const imcNota = document.getElementById('imcNota');
+
+  imcValor.textContent = imc.toFixed(1);
+  resultado.classList.add('show');
+
+  let categoria, color, nota;
+  if(imc < 25){
+    categoria = "Peso normal"; color="#1F9E8F";
+    nota = "Tu IMC está en rango saludable.";
+  } else if(imc < 30){
+    categoria = "Sobrepeso"; color="#E8A83C";
+    nota = "Puedes beneficiarte de un plan de manejo de peso.";
+  } else if(imc < 35){
+    categoria = "Obesidad grado I"; color="#E89A5C";
+    nota = "Eres candidato a evaluación bariátrica, especialmente con comorbilidades.";
+  } else if(imc < 40){
+    categoria = "Obesidad grado II"; color="#E8735C";
+    nota = "Eres candidato a manga gástrica. Agenda tu valoración.";
+  } else {
+    categoria = "Obesidad grado III"; color="#E85C5C";
+    nota = "Eres candidato ideal para cirugía bariátrica. Agenda tu valoración cuanto antes.";
+  }
+
+  imcCategoria.textContent = categoria;
+  imcCategoria.style.background = color+"22";
+  imcCategoria.style.color = color;
+  imcNota.textContent = nota;
+}
+</script>
+
+</body>
+</html>
