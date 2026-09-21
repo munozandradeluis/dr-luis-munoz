@@ -1,0 +1,17 @@
+URLs prioritarias para inspeccionar en Search Console DESPUÉS de publicar esta versión:
+
+https://drluismunozandrade.com/
+https://drluismunozandrade.com/cirujano-general.html
+https://drluismunozandrade.com/coloproctologia.html
+https://drluismunozandrade.com/hernias.html
+https://drluismunozandrade.com/hemorroides.html
+https://drluismunozandrade.com/hemorroides-quito.html
+https://drluismunozandrade.com/cirugia-vesicula.html
+https://drluismunozandrade.com/cirugia-oncologica.html
+https://drluismunozandrade.com/cancer-colon.html
+https://drluismunozandrade.com/cancer-pancreas.html
+
+Para cada una:
+1. Inspeccionar URL
+2. Probar URL publicada
+3. Solicitar indexación

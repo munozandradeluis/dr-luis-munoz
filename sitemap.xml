@@ -1,64 +1,187 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<url><loc>https://drluismunozandrade.com/</loc></url>
-
-<url><loc>https://drluismunozandrade.com/absceso.html</loc></url>
-<url><loc>https://drluismunozandrade.com/apendicitis.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/balon-intragastrico.html</loc></url>
-<url><loc>https://drluismunozandrade.com/bypass-gastrico.html</loc></url>
-<url><loc>https://drluismunozandrade.com/calculadora-imc.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/cancer-colon.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cancer-estomago.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cancer-higado.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cancer-pancreas.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cancer-recto.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cancer-tiroides.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/cirugia-bariatrica.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cirugia-bypass-gastrico.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cirugia-manga-gastrica.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cirugia-oncologica.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cirugia-robotica.html</loc></url>
-<url><loc>https://drluismunozandrade.com/cirugia-vesicula.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/colelitiasis.html</loc></url>
-<url><loc>https://drluismunozandrade.com/colostomia.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/endoscopia.html</loc></url>
-<url><loc>https://drluismunozandrade.com/endoscopia-alta.html</loc></url>
-<url><loc>https://drluismunozandrade.com/endoscopia-baja.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/fisura-fistula.html</loc></url>
-<url><loc>https://drluismunozandrade.com/hemorroides.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/heridas.html</loc></url>
-<url><loc>https://drluismunozandrade.com/hernia-hiatal.html</loc></url>
-<url><loc>https://drluismunozandrade.com/hernia-inguinal.html</loc></url>
-<url><loc>https://drluismunozandrade.com/hernia-umbilical.html</loc></url>
-<url><loc>https://drluismunozandrade.com/hernia-ventral.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/ileostomia.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/lesion-via-biliar.html</loc></url>
-<url><loc>https://drluismunozandrade.com/lesiones-cutaneas.html</loc></url>
-<url><loc>https://drluismunozandrade.com/lipoma.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/meckel.html</loc></url>
-<url><loc>https://drluismunozandrade.com/miomas.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/nodulo-tiroideo.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/reflujo.html</loc></url>
-<url><loc>https://drluismunozandrade.com/tratamiento-glp1.html</loc></url>
-
-<url><loc>https://drluismunozandrade.com/tumor-colon.html</loc></url>
-<url><loc>https://drluismunozandrade.com/tumor-estomago.html</loc></url>
-<url><loc>https://drluismunozandrade.com/tumor-higado.html</loc></url>
-<url><loc>https://drluismunozandrade.com/tumor-pancreas.html</loc></url>
-<url><loc>https://drluismunozandrade.com/tumor-recto.html</loc></url>
-<url><loc>https://drluismunozandrade.com/tumor-tiroides.html</loc></url>
-
+  <url>
+    <loc>https://drluismunozandrade.com/</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/absceso.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/apendicitis.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/balon-intragastrico.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/bypass-gastrico.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/calculadora-imc.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cancer-colon.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cancer-estomago.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cancer-higado.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cancer-pancreas.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cancer-recto.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cancer-tiroides.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cirugia-bariatrica.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cirugia-bypass-gastrico.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cirugia-manga-gastrica.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cirugia-oncologica.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cirugia-robotica.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cirugia-vesicula.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/cirujano-general.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/colelitiasis.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/coloproctologia.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/colostomia.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/endoscopia-alta.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/endoscopia-baja.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/endoscopia.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/fisura-fistula.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/hemorroides-quito.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/hemorroides.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/heridas.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/hernia-hiatal.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/hernia-inguinal.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/hernia-umbilical.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/hernia-ventral.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/hernias.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/ileostomia.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/lesion-via-biliar.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/lesiones-cutaneas.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/lipoma.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/meckel.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/miomas.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/nodulo-tiroideo.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/reflujo.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/tratamiento-glp1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/tumor-colon.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/tumor-estomago.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://drluismunozandrade.com/tumor-higado.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
 </urlset>

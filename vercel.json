@@ -1,8 +1,83 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.drluismunozandrade.com"
+        }
+      ],
+      "destination": "https://drluismunozandrade.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "dr-luis-munoz.vercel.app"
+        }
+      ],
+      "destination": "https://drluismunozandrade.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nodulo-tiroides.html",
+      "destination": "/nodulo-tiroideo.html",
+      "permanent": true
+    },
+    {
+      "source": "/tumor-recto.html",
+      "destination": "/cancer-recto.html",
+      "permanent": true
+    },
+    {
+      "source": "/tumor-tiroides.html",
+      "destination": "/cancer-tiroides.html",
+      "permanent": true
+    },
+    {
+      "source": "/tumor-pancreas.html",
+      "destination": "/cancer-pancreas.html",
+      "permanent": true
+    },
+    {
+      "source": "/hemorroides-causas-s",
+      "destination": "/hemorroides-quito.html",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/agenda",
       "destination": "/agenda.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/agenda.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
+    },
+    {
+      "source": "/modal-confirmacion.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
     }
   ]
 }
